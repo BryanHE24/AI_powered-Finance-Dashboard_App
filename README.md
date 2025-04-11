@@ -60,19 +60,10 @@ This project is an AI-powered finance dashboard that allows users to upload an E
     Open your browser and navigate to `http://127.0.0.1:5001` to access the file upload page. Upload a file or use sample data to generate the dashboard.
 
 ## Project Structure
-AI_PoweredFinanceDashboardApp/
-├── main.py                     # The main entry point of the application.
-├── routes.py                   # Flask routes for handling file uploads and redirection.
-├── generate_sample_data.py     # Script to generate sample financial data.
-├── processor.py                # Data processing functions.
-├── assistant.py                # AI assistant functions.
-├── dashboard.py                # Streamlit dashboard for visualizing financial data.
-├── templates/                  # HTML templates for the Flask app.
-│   └── ...
-├── static/                     # CSS styles for the app.
-│   └── css/
-│       └── ...
-├── requirements.txt            # List of project dependencies.
-├── .env                        # Environment variables for configuration.
-└── README.md                   # Project overview and setup instructions (this file).
+![image](https://github.com/user-attachments/assets/9c1934ae-c29b-436c-a36c-3b70e01f9695)
+
+# demo
+https://github.com/user-attachments/assets/42824136-fd74-437e-bf0e-a023ec072e85
+
+
 
