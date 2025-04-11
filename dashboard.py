@@ -1,4 +1,4 @@
-# dashboard.py
+# dashboard.py (move this to the root directory)
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -10,7 +10,7 @@ from fpdf import FPDF
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Now import our modules
-from processor import process_data, get_kpis, generate_chart_data
+from processor import process_data, get_kpis, generate_chart_data, get_seasonal_trends, get_top_expense_categories
 from assistant import ask_assistant, generate_insights, generate_summary
 
 # Configure the page
@@ -280,46 +280,70 @@ def main():
 
         # Written Summary
         st.subheader("Written Summary")
-        summary = generate_summary(df)
-        st.write(summary)
 
+        # Get the HTML-formatted summary
+        summary_html = generate_summary(df)
+
+        # Create a container with a nice background for the summary
+        summary_container = st.container()
+        with summary_container:
+            # Apply custom styling to the container
+            st.markdown("""
+            <style>
+            .summary-box {
+                background-color: rgba(30, 30, 30, 0.6);
+                border-radius: 10px;
+                padding: 20px;
+                margin: 10px 0;
+                border-left: 4px solid #F6E05E;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+            # Display the HTML-formatted summary in the styled container
+            st.markdown(f'<div class="summary-box">{summary_html}</div>', unsafe_allow_html=True)
+
+            # Add a horizontal rule for visual separation
+            st.markdown("<hr>", unsafe_allow_html=True)
+
+            # Add download option for the plain text version
+            plain_text = summary_html
+            # Remove HTML tags for plain text version
+            import re
+            plain_text = re.sub('<.*?>', '', plain_text)
+
+            st.download_button(
+                label="Download Summary as Text",
+                data=plain_text,
+                file_name="financial_summary.txt",
+                mime="text/plain"
+            )
         # Downloadable Report
         st.subheader("Download Report")
         if st.button("Generate PDF Report"):
-            # Generate PDF report using FPDF
-            pdf = FPDF()
-            pdf.add_page()
-            pdf.set_font("Arial", size=12)
+            try:
+                # Generate PDF report using our enhanced function
+                from processor import generate_pdf_report  # Make sure to import the function
+                pdf = generate_pdf_report(df, kpis, insights, plain_text) # Use plain_text here
+                # Save the PDF to a file
+                pdf_filename = "financial_report.pdf"
+                pdf.output(pdf_filename)
 
-            # Add title to the PDF
-            pdf.cell(200, 10, "Financial Performance Report", 0, 1, 'C')
+                # Provide the PDF file for download with a more descriptive button
+                with open(pdf_filename, "rb") as file:
+                    st.download_button(
+                        label="📊 Download Detailed Financial Report (PDF)",
+                        data=file,
+                        file_name="financial_report.pdf",
+                        mime="application/pdf",
+                        help="Download a professionally formatted PDF with all financial analyses"
+                    )
 
-            # Add KPIs to the PDF
-            pdf.cell(200, 10, f"Total Income: ${kpis['income']:,.2f}", 0, 1)
-            pdf.cell(200, 10, f"Total Expenses: ${kpis['expense']:,.2f}", 0, 1)
-            pdf.cell(200, 10, f"Net Profit: ${kpis['profit']:,.2f}", 0, 1)
-            pdf.cell(200, 10, f"Growth: {kpis['growth']:.1f}%", 0, 1)
-            pdf.cell(200, 10, f"Average Income: ${kpis['avg_income']:,.2f}", 0, 1)
-            pdf.cell(200, 10, f"Average Expenses: ${kpis['avg_expense']:,.2f}", 0, 1)
-            pdf.cell(200, 10, f"Std Dev Income: ${kpis['std_income']:,.2f}", 0, 1)
-            pdf.cell(200, 10, f"Std Dev Expenses: ${kpis['std_expense']:,.2f}", 0, 1)
-
-            # Add insights to the PDF
-            pdf.cell(200, 10, "Insights:", 0, 1)
-            for insight in insights:
-                pdf.multi_cell(0, 10, insight)
-
-            # Add summary to the PDF
-            pdf.cell(200, 10, "Summary:", 0, 1)
-            pdf.multi_cell(0, 10, summary)
-
-            # Save the PDF to a file
-            pdf_filename = "financial_report.pdf"
-            pdf.output(pdf_filename)
-
-            # Provide the PDF file for download
-            with open(pdf_filename, "rb") as file:
-                st.download_button("Download Report", file, "financial_report.pdf")
+                # Success message
+                st.success("Report generated successfully! Click the button above to download.")
+            except Exception as e:
+                st.error(f"Error generating PDF: {str(e)}")
+                st.exception(e)  # This will show the detailed exception for debugging
 
     except Exception as e:
         st.error(f"Error processing data: {str(e)}")

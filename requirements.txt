@@ -6,3 +6,7 @@ dotenv
 streamlit==1.22.0
 plotly==5.14.1
 fpdf==1.7.2
+pandas
+openpyxl==3.1.2
+streamlit
+plotly

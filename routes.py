@@ -1,6 +1,7 @@
-# routes.py
+# routes.py (move to root directory, rename from app/routes.py)
 from flask import Flask, render_template, request, redirect, url_for, flash
 import os
+import subprocess
 from werkzeug.utils import secure_filename
 
 # Create Flask app
@@ -48,23 +49,14 @@ def index():
             # Store filepath for Streamlit
             set_current_file(filepath)
 
-            # Redirect to the Streamlit dashboard with the file path as a query parameter
-            return redirect(url_for('dashboard', filepath=filepath))
+            # Start Streamlit in a separate process
+            streamlit_cmd = ["streamlit", "run", "dashboard.py"]
+            subprocess.Popen(streamlit_cmd)
+
+            # Redirect to the Streamlit dashboard in a new window
+            return redirect('http://localhost:8501')
 
     return render_template('index.html')
-
-@app.route('/dashboard')
-def dashboard():
-    """Redirect to Streamlit dashboard with file path as a query parameter"""
-    filepath = request.args.get('filepath')
-    if filepath:
-        # Set the current file path for Streamlit
-        set_current_file(filepath)
-        # Redirect to the Streamlit dashboard
-        return redirect('http://localhost:8501')
-    else:
-        flash('No file selected. Please upload a file.')
-        return redirect(url_for('index'))
 
 @app.route('/sample')
 def use_sample_data():
@@ -78,8 +70,9 @@ def use_sample_data():
     # Store filepath for Streamlit
     set_current_file(sample_path)
 
-    # Redirect to the Streamlit dashboard with the file path as a query parameter
-    return redirect(url_for('dashboard', filepath=sample_path))
+    # Start Streamlit in a separate process
+    streamlit_cmd = ["streamlit", "run", "dashboard.py"]
+    subprocess.Popen(streamlit_cmd)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    # Redirect to the Streamlit dashboard in a new window
+    return redirect('http://localhost:8501')
