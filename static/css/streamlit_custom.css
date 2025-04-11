@@ -1,0 +1,378 @@
+/* static/css/streamlit_custom.css */
+/* Override default Streamlit styling */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 100%;
+}
+
+/* Dark theme adjustments */
+.stApp {
+    background-color: #1E1E1E;
+}
+
+/* Header styling */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+}
+
+/* Assistant prompt styling */
+.assistant-prompt {
+    display: flex;
+    align-items: center;
+    background-color: #2D2D2D;
+    border-radius: 24px;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.assistant-icon {
+    background-color: #F6E05E;
+    color: #000000;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+
+.assistant-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    color: #FFFFFF;
+}
+
+.highlight {
+    color: #F6E05E;
+    font-weight: bold;
+}
+
+/* KPI container */
+.kpi-container {
+    background-color: #2D2D2D;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.kpi-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+}
+
+.kpi-trend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trend-chart {
+    width: 80%;
+}
+
+.trend-value {
+    color: #F6E05E;
+    font-weight: bold;
+}
+
+/* Reminders section */
+.reminders-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.reminder-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #454545;
+}
+
+.reminder-dot.active {
+    background-color: #F6E05E;
+    border-color: #F6E05E;
+}
+
+/* Report header */
+.report-header {
+    display: flex;
+    flex-direction: column;
+    background-color: #3D3D3D;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.report-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.close-icon, .edit-icon {
+    color: #AAAAAA;
+    cursor: pointer;
+}
+
+.report-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-range {
+    background-color: #2D2D2D;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.save-report-btn {
+    background-color: #F6E05E;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Metric cards */
+.metric-card {
+    background-color: #2D2D2D;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metric-title {
+    color: #AAAAAA;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.metric-bar {
+    height: 6px;
+    border-radius: 3px;
+    background-color: #454545;
+    position: relative;
+}
+
+.metric-bar.income::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 80%;
+    background-color: #F6E05E;
+    border-radius: 3px;
+}
+
+.metric-bar.expense::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+}
+
+.metric-bar.income-pending::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 40%;
+    background-color: #F6E05E;
+    opacity: 0.5;
+    border-radius: 3px;
+}
+
+.metric-bar.expense-pending::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    background-color: #FFFFFF;
+    opacity: 0.5;
+    border-radius: 3px;
+}
+
+/* Income breakdown */
+.income-breakdown {
+    margin-top: 1.5rem;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #3D3D3D;
+}
+
+.sub-item {
+    padding-left: 2rem;
+}
+
+.item-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.expand-icon {
+    color: #AAAAAA;
+}
+.item-bar {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #3D3D3D;
+    margin: 0 1rem;
+    align-self: center;
+}
+
+.item-value {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.spacer {
+    height: 1.5rem;
+}
+
+/* Assistant summary */
+.assistant-summary {
+    background-color: #2D2D2D;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary-text {
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.metrics-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+}
+
+.small-metric {
+    text-align: center;
+}
+
+.small-metric-label {
+    color: #AAAAAA;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.small-metric-value {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.color-blocks {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.color-block {
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.color-block.gray {
+    background-color: #AAAAAA;
+}
+
+.color-block.black {
+    background-color: #000000;
+}
+
+.color-block.yellow {
+    background-color: #F6E05E;
+}
+
+/* Trend sections */
+.trend-section {
+    background-color: #2D2D2D;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    height: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.trend-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.trend-header h4 {
+    margin: 0;
+}
+
+.settings-icon {
+    color: #AAAAAA;
+    cursor: pointer;
+}
+
+/* Sidebar styling for AI Assistant */
+.css-1d391kg {
+    background-color: #1E1E1E;
+}
+
+.sidebar .block-container {
+    padding-top: 2rem;
+}
