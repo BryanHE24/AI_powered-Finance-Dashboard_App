@@ -1,0 +1,72 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="bolt-icon">⚡</span>
+            </div>
+            <h1>Finance Dashboard</h1>
+        </div>
+
+        <div class="upload-section">
+            <h2>Upload Your Excel File</h2>
+
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+
+            <form action="/" method="post" enctype="multipart/form-data" class="upload-form">
+                <div class="file-input-container">
+                    <input type="file" name="file" id="file-input" accept=".xlsx, .xls" required>
+                    <label for="file-input" class="file-label">Choose File</label>
+                    <span id="file-name">No file chosen</span>
+                </div>
+                <button type="submit" class="upload-button">Upload & Generate Dashboard</button>
+            </form>
+
+            {% if preview %}
+            <div class="preview-container">
+                <h3>Preview of "{{ filename }}"</h3>
+                <div class="data-preview">
+                    {{ preview|safe }}
+                </div>
+                <a href="/dashboard" class="view-dashboard-btn">View Full Dashboard</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Dynamic Visualization</h3>
+                <p>Automatically generate interactive charts from your Excel data</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Assistant</h3>
+                <p>Get insights and answers about your financial data</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Responsive Design</h3>
+                <p>Access your dashboard from any device</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show selected filename
+        document.getElementById('file-input').addEventListener('change', function() {
+            const fileName = this.files[0]?.name || 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
