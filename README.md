@@ -63,6 +63,8 @@ This project is an AI-powered finance dashboard that allows users to upload an E
 ![image](https://github.com/user-attachments/assets/9c1934ae-c29b-436c-a36c-3b70e01f9695)
 
 # demo
+![image](https://github.com/user-attachments/assets/254c78ad-cb7f-49e6-bb9b-e75a491678fc)
+
 https://github.com/user-attachments/assets/42824136-fd74-437e-bf0e-a023ec072e85
 
 
