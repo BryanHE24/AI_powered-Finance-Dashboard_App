@@ -33,7 +33,7 @@ The AI-Powered Finance Dashboard is a comprehensive tool designed to help users 
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/BryanHE24/AI_PoweredFinanceDashboardApp.git](https://github.com/BryanHE24/AI_PoweredFinanceDashboardApp.git)
+    git clone https://github.com/BryanHE24/AI_PoweredFinanceDashboardApp.git
     cd AI_PoweredFinanceDashboardApp
     ```
 
