@@ -1,4 +1,4 @@
-# generate_sample_data.py
+# src/generate_sample_data.py
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta

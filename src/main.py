@@ -1,4 +1,4 @@
-# main.py
+# src/main.py
 import os
 import sys
 import webbrowser
