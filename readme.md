@@ -25,8 +25,9 @@ The AI-Powered Finance Dashboard is a comprehensive tool designed to help users 
 
 ### Prerequisites
 
-* Python 3.x
-* pip (Python package installer)
+* Python 3.8+ installed
+* An OpenAI API key (Get your key here: https://platform.openai.com/api-keys)
+
 
 ### Steps
 
