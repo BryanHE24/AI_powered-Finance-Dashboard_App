@@ -1,4 +1,3 @@
-/* app/static/css/style.css */
 :root {
     --primary: #f6e05e;
     --dark-bg: #1e1e1e;
@@ -183,7 +182,7 @@ body {
     .container {
         padding: 1rem;
     }
-    
+
     .features {
         grid-template-columns: 1fr;
     }
